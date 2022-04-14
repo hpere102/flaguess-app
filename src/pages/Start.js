@@ -34,7 +34,7 @@ const Start = () => {
   const [search, setSearch] = useState([""]);
   const [characterCount, setCharacterCount] = useState(0);
   const [spinner, setSpinner] = useState(false); 
-  const [list, setList] = useState();
+  const [list] = useState();
   const [seconds, setSeconds] = React.useState(15);
   const [correctAnswer, setAnswer] = useState(false); 
 
@@ -111,7 +111,7 @@ const handleChange2 = event => {
           if (seconds > 0) {
             setTimeout(() => setSeconds(seconds - 1), 1000);
           } else {
-            setSeconds(rightAnswer());
+            setSeconds(rightAnswer(),seconds);
           }
         });
  
@@ -130,7 +130,7 @@ const handleChange2 = event => {
       <div style={{display: renderCorrect() }} className='correct'>
           Correct
         </div>
-      {correctAnswer && <h3>The correct answer is <span>{randomCountry}</span></h3> }
+      {correctAnswer && <div>The correct answer is <span>{randomCountry}</span></div> }
       
       <div>
         
@@ -146,10 +146,10 @@ const handleChange2 = event => {
 
       
       {countries.filter((data)=> {
-       if (search == "") {
-         return data
+       if (search === "") {
+         return true
         } else if (data.name.toLowerCase().includes(search.toLowerCase())) {
-          return data
+          return true
         } 
       
      }).map((data) => {
