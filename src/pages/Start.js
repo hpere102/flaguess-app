@@ -146,11 +146,11 @@ const handleChange2 = event => {
 
       
       {countries.filter((data)=> {
-       if (search === "") {
+       if (search <= "") {
          return data
         } else if (data.name.toLowerCase().includes(search.toLowerCase())) {
           return data
-        } else return true
+        } else return false
       
      }).map((data) => {
        return (
