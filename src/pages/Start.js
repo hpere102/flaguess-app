@@ -111,9 +111,9 @@ const handleChange2 = event => {
           if (seconds > 0) {
             setTimeout(() => setSeconds(seconds - 1), 1000);
           } else {
-            setSeconds(rightAnswer(),seconds);
+            setSeconds(rightAnswer());
           }
-        });
+        },[seconds]);
  
  
     return (
@@ -125,7 +125,7 @@ const handleChange2 = event => {
 
       <div>
       
-      {spinner ? <h2 className="loader"></h2> : <img alt="avi" className="flag"  src={countryFlag} /> }
+      {spinner ? <div className="loader"></div> : <img alt="avi" className="flag"  src={countryFlag} /> }
       </div>
       <div style={{display: renderCorrect() }} className='correct'>
           Correct
@@ -147,10 +147,10 @@ const handleChange2 = event => {
       
       {countries.filter((data)=> {
        if (search === "") {
-         return true
+         return data
         } else if (data.name.toLowerCase().includes(search.toLowerCase())) {
-          return true
-        } 
+          return data
+        } else return true
       
      }).map((data) => {
        return (
